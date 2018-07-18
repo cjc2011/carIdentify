@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Index from '@/components/index/index'
 import Upload from '@/components/upload/upload'
 import InsuranceList from '@/components/insurance_list/insurance_list'
+import Success from '@/components/success/success'
 Vue.use(Router)
 
 export default new Router({
@@ -20,6 +21,10 @@ export default new Router({
       path: '/insurance_list',
       name: 'insurance_list',
       component: InsuranceList
+    },{
+      path: '/success',
+      name: 'success',
+      component: Success
     }
   ]
 })

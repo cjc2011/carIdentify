@@ -31,15 +31,15 @@
     </div>
     <div class="insurance-list">
       <div class="insurance-col">
-        <div class="insurance-item" :class="{'active': currentIndex == 0}" data-index=0 @click="select_info(0)">
+        <div class="insurance-items" :class="{'active': currentIndex == 0}" data-index=0 @click="select_info(0)">
           <img src="./img1.png" alt="车辆损失险">
           <p class="text">车辆损失险</p>
         </div>
-        <div class="insurance-item" :class="{'active': currentIndex == 1}" data-index=1 @click="select_info(1)">
+        <div class="insurance-items" :class="{'active': currentIndex == 1}" data-index=1 @click="select_info(1)">
           <img src="./img2.png" alt="第三者责任险">
           <p class="text">第三者责任险</p>
         </div>
-        <div class="insurance-item" :class="{'active': currentIndex == 2}" data-index=2 @click="select_info(2)">
+        <div class="insurance-items" :class="{'active': currentIndex == 2}" data-index=2 @click="select_info(2)">
           <img src="./img3.png" alt="全车盗抢险">
           <p class="text">全车盗抢险</p>
         </div>
@@ -60,15 +60,15 @@
       </div>
       <div class="split-line"></div>
       <div class="insurance-col">
-        <div class="insurance-item"  :class="{'active': currentIndex == 3}" data-index=3 @click="select_info(3)">
+        <div class="insurance-items"  :class="{'active': currentIndex == 3}" data-index=3 @click="select_info(3)">
           <img src="./list-1.png" alt="司机责任险">
           <p class="text">司机责任险</p>
         </div>
-        <div class="insurance-item"  :class="{'active': currentIndex == 4}" data-index=4 @click="select_info(4)">
+        <div class="insurance-items"  :class="{'active': currentIndex == 4}" data-index=4 @click="select_info(4)">
           <img src="./list-2.png" alt="玻璃单独破碎险">
           <p class="text">玻璃单独破碎险</p>
         </div>
-        <div class="insurance-item"  :class="{'active': currentIndex == 5}" data-index=5 @click="select_info(5)">
+        <div class="insurance-items"  :class="{'active': currentIndex == 5}" data-index=5 @click="select_info(5)">
           <img src="./list-3.png" alt="车身划痕险">
           <p class="text">车身划痕险</p>
         </div>
@@ -89,15 +89,15 @@
       </div>
       <div class="split-line"></div>
       <div class="insurance-col">
-        <div class="insurance-item"  :class="{'active': currentIndex == 6}" data-index=6 @click="select_info(6)">
+        <div class="insurance-items"  :class="{'active': currentIndex == 6}" data-index=6 @click="select_info(6)">
           <img src="./list-4.png" alt="乘客责任险">
           <p class="text">乘客责任险</p>
         </div>
-        <div class="insurance-item"  :class="{'active': currentIndex == 7}" data-index=7 @click="select_info(7)">
+        <div class="insurance-items"  :class="{'active': currentIndex == 7}" data-index=7 @click="select_info(7)">
           <img src="./list-5.png" alt="自燃损失险">
           <p class="text">自燃损失险</p>
         </div>
-        <div class="insurance-item"  :class="{'active': currentIndex == 8}" data-index=8 @click="select_info(8)">
+        <div class="insurance-items"  :class="{'active': currentIndex == 8}" data-index=8 @click="select_info(8)">
           <img src="./list-6.png" alt="发动机涉水险">
           <p class="text">发动机涉水险</p>
         </div>
@@ -117,8 +117,30 @@
         </div>
       </div>
       <div class="split-line"></div>
-      <div class="img-wrapper">
-        <img src="./bottom-img.png" alt="不计免赔">
+      <div class="insurance-col">
+        <div class="insurance-items one"  :class="{'active': currentIndex == 9}" data-index=9 @click="select_info(9)">
+          <img class="center" src="./list-7.png" alt="自燃损失险">
+          <p class="text">不计免赔</p>
+        </div>
+      </div>
+      <div class="insurance-info" v-if="currentIndex == 9">
+        <div class="title">
+          <span class="name">{{insurances[currentIndex].name}}</span>
+          <span class="text">{{insurances[currentIndex].name_text}}</span>
+        </div>
+        <div class="scope">
+          <span class="name">{{insurances[currentIndex].scope}}</span>
+          <span class="text">{{insurances[currentIndex].scope_text}}</span>
+        </div>
+        <div class="people">
+          <span class="name">{{insurances[currentIndex].people}}</span>
+          <span class="text">{{insurances[currentIndex].people_text}}</span>
+        </div>
+      </div>
+      <div class="split-line"></div>
+      <div class="bottom-button">
+        <a class="button" href="tel:1770101182">电话咨询</a>
+        <a class="button" @click="get_price">获取报价</a>
       </div>
     </div>
     <div class="box-title">
@@ -142,11 +164,6 @@
       <div class="title">8、投保完成后如何拿到车险保单？送单免费吗？</div>
       <div class="text">投保成功后，您的保单最快2天免费邮寄到您的指定地址；</div>
     </div>
-    <div class="bottom-button">
-      <a class="button" href="tel:1770101182">拨打电话</a>
-      <a class="button" @click="get_price">获取报价</a>
-    </div>
-
   </div>
 </template>
 
@@ -228,6 +245,14 @@ export default {
           scope_text: '赔偿因为下暴雨或其他导致发动机进水的损失',
           people: '适用人群',
           people_text: '适合多雨及内涝地区的车辆'
+        },
+        {
+          name: '不计免赔',
+          name_text: '90%的车主投保',
+          scope: '赔偿范围',
+          scope_text: '把原本需要车主赔偿的部分转嫁给保险公司赔偿',
+          people: '适用人群',
+          people_text: '适合买了主险的车主'
         }
       ],
       currentIndex: null
@@ -252,6 +277,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="stylus" rel="stylesheet/stylus">
+.home 
+  max-width 800px
+  margin 0 auto 
 .box-title
   display flex
   justify-content center
@@ -307,7 +335,8 @@ export default {
   .insurance-col  
     display flex
     margin-top 12px
-    .insurance-item 
+    justify-content center
+    .insurance-items
       position relative
       &.active:before 
         content ''
@@ -328,7 +357,7 @@ export default {
         position absolute
         height 40px
         width 2px
-        right -2px
+        right 2px
         top 10px
         background #b9b9b9 
       &:last-child 
@@ -339,10 +368,12 @@ export default {
         max-width 100%
         width 90%
       p.text 
+        text-align center
         font-size  12px 
         line-height 40px
         color #4b4b4b 
   .img-wrapper
+    text-align center
     border-bottom 1px solid #eeeeee
     img 
       width 140px  
@@ -376,17 +407,21 @@ export default {
     font-size 13px
     color #bfbfbf  
 .bottom-button
-  position fixed 
-  bottom: 86px 
+  position relative 
+  padding 25px 0
   display flex 
   justify-content space-around
   width 100%
   .button 
-    width 100px
-    height 28px
-    line-height 28px
-    border-radius 28px  
-    font-size 14px
+    text-align center
+    width 120px
+    height 36px
+    line-height 36px
+    border-radius 36px 
+    font-size 16px
     color #ffffff  
     background #fb9533
+.one 
+  width 30%    
+  margin 0 auto
 </style>

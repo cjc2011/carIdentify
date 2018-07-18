@@ -32,6 +32,20 @@ module.exports = {
           '^/vehicle_identify': ''
         }
       },
+      '/channel': {
+        target: 'http://127.0.0.1:3000/channel',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/channel': ''
+        }
+      },
+      '/carData': {
+        target: 'http://127.0.0.1:3000/carData',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/carData': ''
+        }
+      }
     },
 
     // Various Dev Server settings
@@ -65,7 +79,7 @@ module.exports = {
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/',
+    assetsPublicPath: './',
 
     /**
      * Source Maps
